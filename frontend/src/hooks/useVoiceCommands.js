@@ -119,27 +119,10 @@ const useVoiceCommands = () => {
   const executeCommand = (route, commandName) => {
     deactivateCommandMode()
     
-    // Show feedback
-    const messages = {
-      '/chat': 'चैट खोल रहा हूं... 💬',
-      '/image': 'इमेज जनरेटर खोल रहा हूं... 🎨',
-      '/editor': 'इमेज एडिटर खोल रहा हूं... ✂️',
-      '/settings': 'सेटिंग्स खोल रहा हूं... ⚙️',
-      '/': 'होम पर जा रहा हूं... 🏠',
-    }
-    
-    toast.success(messages[route] || 'खोल रहा हूं...', {
-      duration: 1500,
-      style: {
-        background: 'linear-gradient(135deg, #ff5722 0%, #ffc107 100%)',
-        color: 'white',
-      }
-    })
-    
-    // Navigate after short delay for smooth UX
+    // Silent navigation - no toast popup
     setTimeout(() => {
       navigate(route)
-    }, 500)
+    }, 300)
   }
 
   const startListening = () => {
