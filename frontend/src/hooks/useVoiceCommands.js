@@ -168,9 +168,7 @@ const useVoiceCommands = () => {
         continuous: true, 
         language: 'hi-IN' 
       })
-      toast.success('🎙️ माइक चालू है। "जय हनुमान" बोलें', {
-        duration: 2000
-      })
+      // Removed toast notification for cleaner UX
       return true
     } catch (error) {
       toast.error('माइक access नहीं मिला। Permissions check करें।')
