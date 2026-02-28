@@ -190,7 +190,8 @@ const useVoiceCommands = () => {
     startListening,
     stopListening,
     browserSupportsSpeechRecognition,
-    transcript
+    transcript,
+    isMobile
   }
 }
 
