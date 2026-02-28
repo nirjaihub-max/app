@@ -18,9 +18,28 @@ const ImageGallery = ({ newImage, onClose }) => {
         data: newImage,
         timestamp: new Date().toISOString()
       }
-      const updatedImages = [imageData, ...images]
+      
+      // Keep only last 5 images to avoid quota issues
+      const updatedImages = [imageData, ...images].slice(0, 5)
       setImages(updatedImages)
-      localStorage.setItem('hanuman_images', JSON.stringify(updatedImages))
+      
+      // Save to localStorage with error handling
+      try {
+        localStorage.setItem('hanuman_images', JSON.stringify(updatedImages))
+      } catch (error) {
+        if (error.name === 'QuotaExceededError') {
+          // Clear old images and try again
+          const reducedImages = [imageData]
+          setImages(reducedImages)
+          try {
+            localStorage.setItem('hanuman_images', JSON.stringify(reducedImages))
+            toast.info('पुरानी इमेज हटा दी गई (Storage limit)')
+          } catch (e) {
+            toast.error('Gallery में save नहीं हो सका')
+            console.error('Storage error:', e)
+          }
+        }
+      }
     }
   }, [newImage])
 
