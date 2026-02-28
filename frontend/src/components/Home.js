@@ -49,35 +49,17 @@ const Home = ({ sessionId, language }) => {
             HANUMAN GPT
           </h1>
           <p className="text-[#cca891] text-lg font-hindi">आपका AI सुपर असिस्टेंट</p>
-        </motion.div>
-
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.2, type: 'spring' }}
-          className="flex flex-col items-center gap-4"
-        >
-          <VoiceOrb listening={listening} isProcessing={isProcessing} />
-          
-          <div className="text-center space-y-2">
+          <div className="mt-4 bg-obsidian-card/60 backdrop-blur-md border border-agni/30 rounded-xl px-6 py-3 inline-block">
             <p className="text-[#ffb74d] font-hindi text-sm">
-              बोलें: <span className="font-bold text-agni">"जय हनुमान"</span> या माइक दबाएं
+              🎙️ बोलें: <span className="font-bold text-agni">"जय हनुमान"</span> फिर कोई भी कमांड
             </p>
-            <button
-              onClick={listening ? stopListening : startListening}
-              className={`px-8 py-3 rounded-full font-bold uppercase text-sm transition-all duration-300 ${
-                listening
-                  ? 'bg-red-600 hover:bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)]'
-                  : 'bg-gradient-to-r from-agni to-ember hover:from-orange-500 hover:to-amber-500 shadow-[0_0_20px_rgba(255,87,34,0.6)]'
-              }`}
-              data-testid="voice-activation-button"
-            >
-              <Mic className="w-5 h-5 inline mr-2" />
-              {listening ? 'रोकें' : 'माइक चालू करें'}
-            </button>
+            <p className="text-[#8a6a5c] text-xs mt-1 font-hindi">
+              जैसे: "image banao", "chat kholo", "editor kholo"
+            </p>
           </div>
         </motion.div>
 
+        {/* Feature Cards */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
