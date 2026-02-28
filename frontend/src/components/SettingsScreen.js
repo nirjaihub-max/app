@@ -30,9 +30,9 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
             </div>
           </div>
           <h1 className="text-3xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-agni to-ember" data-testid="settings-title">
-            Settings
+            {t('settingsTitle', language)}
           </h1>
-          <p className="text-[#cca891] font-hindi">अपनी पसंद सेट करें</p>
+          <p className="text-[#cca891] font-hindi">{t('settingsSubtitle', language)}</p>
         </motion.div>
 
         <motion.div
