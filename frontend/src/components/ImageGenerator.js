@@ -100,12 +100,12 @@ const ImageGenerator = ({ language }) => {
             {loading ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin" />
-                <span className="font-hindi">बना रहे हैं...</span>
+                <span className="font-hindi">{t('generating', language)}</span>
               </>
             ) : (
               <>
                 <Sparkles className="w-5 h-5" />
-                <span className="font-hindi">इमेज बनाओ</span>
+                <span className="font-hindi">{t('generateImage', language)}</span>
               </>
             )}
           </button>
