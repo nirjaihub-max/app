@@ -84,7 +84,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
                 }`}
                 data-testid="language-hindi"
               >
-                <div className="font-hindi">हिंदी (Hindi)</div>
+                <div className="font-hindi">{t('hindi', language)}</div>
               </button>
               
               <button
