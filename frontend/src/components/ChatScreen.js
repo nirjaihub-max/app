@@ -73,6 +73,7 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+      setAudioStream(stream)
       const mediaRecorder = new MediaRecorder(stream)
       mediaRecorderRef.current = mediaRecorder
       audioChunksRef.current = []
@@ -85,6 +86,7 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' })
         await sendVoiceMessage(audioBlob)
         stream.getTracks().forEach(track => track.stop())
+        setAudioStream(null)
       }
 
       mediaRecorder.start()
