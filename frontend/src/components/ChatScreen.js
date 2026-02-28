@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Mic, Loader2 } from 'lucide-react'
+import { Send, Mic, Loader2, Copy, Share2 } from 'lucide-react'
 import axios from 'axios'
 import { toast } from 'sonner'
+import TypingIndicator from './TypingIndicator'
+import VoiceWaveform from './VoiceWaveform'
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 const API = `${BACKEND_URL}/api`
