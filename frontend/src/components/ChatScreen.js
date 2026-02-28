@@ -237,7 +237,7 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-              placeholder="कुछ पूछें..."
+              placeholder={t('chatPlaceholder', language)}
               className="flex-1 bg-black/40 border border-agni/30 focus:border-agni rounded-full px-4 py-3 text-[#ffebd6] placeholder:text-[#8a6a5c] font-hindi outline-none"
               data-testid="chat-input"
             />
