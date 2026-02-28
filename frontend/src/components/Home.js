@@ -10,22 +10,22 @@ const Home = ({ sessionId, language }) => {
   const features = [
     {
       icon: MessageSquare,
-      title: 'AI चैट',
-      desc: 'हिंदी और English में बात करें',
+      title: t('aiChatTitle', language),
+      desc: t('aiChatDesc', language),
       path: '/chat',
       color: 'from-orange-600 to-red-600'
     },
     {
       icon: ImageIcon,
-      title: 'AI इमेज',
-      desc: 'कुछ भी imagine करें, create करें',
+      title: t('aiImageTitle', language),
+      desc: t('aiImageDesc', language),
       path: '/image',
       color: 'from-amber-600 to-orange-600'
     },
     {
       icon: Scissors,
-      title: 'Image Editor',
-      desc: 'बैकग्राउंड हटाएं, 4K upscale',
+      title: t('imageEditorTitle', language),
+      desc: t('imageEditorDesc', language),
       path: '/editor',
       color: 'from-red-600 to-pink-600'
     },
