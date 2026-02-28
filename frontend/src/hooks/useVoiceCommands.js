@@ -144,15 +144,26 @@ const useVoiceCommands = () => {
 
   const startListening = () => {
     if (!browserSupportsSpeechRecognition) {
-      toast.error('आपका ब्राउज़र वॉइस को सपोर्ट नहीं करता')
+      toast.error('आपका ब्राउज़र वॉइस को सपोर्ट नहीं करता। Desktop Chrome में बेहतर काम करता है।', {
+        duration: 4000
+      })
       return false
     }
     
-    SpeechRecognition.startListening({ 
-      continuous: true, 
-      language: 'hi-IN' 
-    })
-    return true
+    try {
+      SpeechRecognition.startListening({ 
+        continuous: true, 
+        language: 'hi-IN' 
+      })
+      toast.success('🎙️ माइक चालू है। "जय हनुमान" बोलें', {
+        duration: 2000
+      })
+      return true
+    } catch (error) {
+      toast.error('माइक access नहीं मिला। Permissions check करें।')
+      console.error('Speech recognition error:', error)
+      return false
+    }
   }
 
   const stopListening = () => {
