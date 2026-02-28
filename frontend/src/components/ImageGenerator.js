@@ -129,6 +129,8 @@ const ImageGenerator = ({ language }) => {
             </button>
           </motion.div>
         )}
+
+        <ImageGallery newImage={generatedImage} />
       </div>
     </div>
   )
