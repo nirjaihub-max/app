@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Download, Trash2, ZoomIn } from 'lucide-react'
+import { toast } from 'sonner'
 
 const ImageGallery = ({ newImage, onClose }) => {
   const [images, setImages] = useState([])
