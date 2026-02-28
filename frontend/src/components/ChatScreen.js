@@ -166,7 +166,7 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
     <div className="min-h-screen flex flex-col bg-obsidian">
       <div className="sticky top-0 z-10 bg-obsidian-card/90 backdrop-blur-lg border-b border-agni/30 px-4 py-4">
         <h1 className="text-2xl font-heading font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-agni to-ember" data-testid="chat-title">
-          🔱 HANUMAN GPT
+          {t('chatTitle', language)}
         </h1>
       </div>
 
