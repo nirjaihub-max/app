@@ -324,13 +324,13 @@ const ImageEditor = ({ language = 'hi' }) => {
             className="space-y-4"
           >
             <div className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4">
-              <h3 className="font-heading text-[#ffebd6] font-hindi">रिजल्ट</h3>
+              <h3 className="font-heading text-[#ffebd6] font-hindi">{t('result', language)}</h3>
               
               {loading ? (
                 <div className="flex items-center justify-center h-64 rounded-xl bg-black/40">
                   <div className="text-center space-y-4">
                     <Loader2 className="w-12 h-12 text-agni animate-spin mx-auto" />
-                    <p className="text-[#cca891] font-hindi">प्रोसेस हो रहा है...</p>
+                    <p className="text-[#cca891] font-hindi">{t('processing', language)}</p>
                   </div>
                 </div>
               ) : resultImage ? (
@@ -344,7 +344,7 @@ const ImageEditor = ({ language = 'hi' }) => {
                 </div>
               ) : (
                 <div className="flex items-center justify-center h-64 rounded-xl bg-black/40 border-2 border-dashed border-agni/20">
-                  <p className="text-[#8a6a5c] font-hindi">रिजल्ट यहां दिखेगा</p>
+                  <p className="text-[#8a6a5c] font-hindi">{t('resultHere', language)}</p>
                 </div>
               )}
             </div>
