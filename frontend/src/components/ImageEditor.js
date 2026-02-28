@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Upload, Download, Loader2, Eraser, Palette, Sparkles, Maximize2, X } from 'lucide-react'
 import axios from 'axios'
 import { toast } from 'sonner'
+import { t } from '../utils/translations'
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 const API = `${BACKEND_URL}/api`
