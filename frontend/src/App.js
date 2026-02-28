@@ -104,6 +104,7 @@ function AppContent() {
           </motion.div>
         )}
       </AnimatePresence>
+      */}
       
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
