@@ -49,16 +49,16 @@ const Home = ({ sessionId, language }) => {
           <h1 className="text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-agni via-ember to-agni drop-shadow-[0_0_20px_rgba(255,87,34,0.5)]" data-testid="app-title">
             HANUMAN GPT
           </h1>
-          <p className="text-[#cca891] text-lg font-hindi">आपका AI सुपर असिस्टेंट</p>
+          <p className="text-[#cca891] text-lg font-hindi">{t('appSubtitle', language)}</p>
           <div className="mt-4 bg-obsidian-card/60 backdrop-blur-md border border-agni/30 rounded-xl px-6 py-3 inline-block">
             <p className="text-[#ffb74d] font-hindi text-sm">
-              🎙️ बोलें: <span className="font-bold text-agni">"जय हनुमान"</span> फिर कोई भी कमांड
+              🎙️ {t('voiceInstruction', language)}
             </p>
             <p className="text-[#8a6a5c] text-xs mt-1 font-hindi">
-              जैसे: "image banao", "chat kholo", "editor kholo"
+              {t('voiceExamples', language)}
             </p>
             <p className="text-[#6a4a3c] text-xs mt-2 font-hindi border-t border-agni/20 pt-2">
-              💡 नोट: Desktop Chrome में सबसे बेहतर काम करता है
+              💡 {t('voiceNote', language)}
             </p>
           </div>
         </motion.div>
