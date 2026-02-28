@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Mic, MessageSquare, Image as ImageIcon, Sparkles } from 'lucide-react'
+import { Mic, MessageSquare, Image as ImageIcon, Sparkles, Scissors } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import VoiceOrb from './VoiceOrb'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
