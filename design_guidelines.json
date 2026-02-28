@@ -1,0 +1,146 @@
+{
+  "project_name": "HANUMAN GPT",
+  "theme": {
+    "mode": "dark",
+    "emotional_archetype": "The Agni (Fire) Archetype",
+    "tone": "Divine, Powerful, Intelligent, Warm",
+    "colors": {
+      "background": {
+        "primary": "#050201",
+        "secondary": "#120805",
+        "card": "#1c0d08",
+        "overlay": "rgba(5, 2, 1, 0.8)"
+      },
+      "text": {
+        "primary": "#ffebd6",
+        "secondary": "#cca891",
+        "muted": "#8a6a5c",
+        "highlight": "#ffb74d"
+      },
+      "brand": {
+        "primary": "#ff5722",
+        "primary_hover": "#e64a19",
+        "secondary": "#ffc107",
+        "accent": "#d84315",
+        "glow": "rgba(255, 87, 34, 0.6)"
+      },
+      "status": {
+        "success": "#4caf50",
+        "error": "#d32f2f",
+        "warning": "#ffa000",
+        "info": "#29b6f6"
+      },
+      "border": {
+        "default": "#3d1e14",
+        "active": "#ff5722"
+      }
+    },
+    "typography": {
+      "font_family_heading": "Cinzel, serif",
+      "font_family_body": "Manrope, sans-serif",
+      "font_family_hindi": "Mukta, sans-serif",
+      "scale": {
+        "h1": "text-4xl md:text-5xl font-bold tracking-tight",
+        "h2": "text-3xl md:text-4xl font-semibold",
+        "h3": "text-2xl font-medium",
+        "body_lg": "text-lg leading-relaxed",
+        "body_base": "text-base leading-relaxed",
+        "caption": "text-sm text-muted-foreground"
+      }
+    },
+    "spacing": {
+      "container_padding": "p-4 md:p-6 lg:p-8",
+      "section_gap": "gap-8 md:gap-12",
+      "element_gap": "gap-4"
+    },
+    "radius": {
+      "default": "rounded-xl",
+      "button": "rounded-full",
+      "card": "rounded-2xl"
+    },
+    "shadows": {
+      "card": "0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3)",
+      "glow": "0 0 15px rgba(255, 87, 34, 0.3), 0 0 5px rgba(255, 193, 7, 0.2)",
+      "glow_strong": "0 0 25px rgba(255, 87, 34, 0.5), 0 0 10px rgba(255, 193, 7, 0.4)"
+    }
+  },
+  "layout_strategies": {
+    "mobile_first": true,
+    "max_width": "max-w-md mx-auto md:max-w-4xl lg:max-w-7xl",
+    "grid_system": "grid grid-cols-1 md:grid-cols-12 gap-6",
+    "alignment": "text-left",
+    "glassmorphism": "backdrop-blur-xl bg-black/40 border border-white/10"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 text-white shadow-[0_0_15px_rgba(255,87,34,0.4)] transition-all duration-300 font-bold tracking-wide uppercase text-sm px-6 py-3",
+      "secondary": "bg-white/5 border border-orange-500/30 hover:bg-orange-500/10 text-orange-100 backdrop-blur-sm transition-all duration-300",
+      "ghost": "hover:bg-orange-500/10 text-orange-200"
+    },
+    "cards": {
+      "style": "bg-[#1c0d08]/80 border border-orange-900/30 backdrop-blur-md rounded-2xl shadow-xl overflow-hidden hover:border-orange-500/50 transition-colors duration-300"
+    },
+    "inputs": {
+      "style": "bg-black/40 border-orange-900/50 focus:border-orange-500/80 text-orange-50 placeholder:text-orange-900/60 rounded-xl p-4 focus:ring-1 focus:ring-orange-500/50 transition-all"
+    },
+    "navigation": {
+      "bottom_bar": "fixed bottom-0 left-0 right-0 bg-black/80 backdrop-blur-lg border-t border-orange-900/30 z-50 flex justify-around items-center p-4 safe-area-pb"
+    }
+  },
+  "visual_enhancers": {
+    "gradients": {
+      "fire": "bg-gradient-to-br from-orange-600 via-red-600 to-amber-700",
+      "ember": "bg-gradient-to-t from-black via-[#1c0d08] to-transparent"
+    },
+    "textures": {
+      "grain": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")"
+    },
+    "animations": {
+      "pulse_slow": "animate-pulse",
+      "float": "animate-bounce duration-3000"
+    }
+  },
+  "assets": {
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Manrope:wght@300;400;600;800&family=Mukta:wght@300;400;600;800&display=swap"
+    ],
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1640607760189-dbca1b6b3291?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG9yYW5nZSUyMGZpcmUlMjBwYXJ0aWNsZXMlMjBibGFjayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcyMjQ3NjM2fDA&ixlib=rb-4.1.0&q=85",
+      "texture_fire": "https://images.unsplash.com/photo-1624821778984-1e62eae1e033?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwyfHxhYnN0cmFjdCUyMG9yYW5nZSUyMGZpcmUlMjBwYXJ0aWNsZXMlMjBibGFjayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcyMjQ3NjM2fDA&ixlib=rb-4.1.0&q=85",
+      "placeholder_hanuman": "https://images.unsplash.com/photo-1645393447128-f21fdfc7001a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjY2NzN8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMG9yYW5nZSUyMGZpcmUlMjBwYXJ0aWNsZXMlMjBibGFjayUyMGJhY2tncm91bmR8ZW58MHx8fHwxNzcyMjQ3NjM2fDA&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "functionality_requirements": {
+    "voice": {
+      "library": "react-speech-recognition",
+      "wake_word": "Jai Hanuman",
+      "visualizer": "Central pulsing orb that reacts to volume level"
+    },
+    "language": {
+      "default": "hi-IN",
+      "options": ["en-IN", "hi-IN"]
+    },
+    "chat": {
+      "streaming": true,
+      "history_persistence": "local_storage"
+    }
+  },
+  "instructions_to_main_agent": [
+    "1. INSTALLATION: Run `yarn add framer-motion react-speech-recognition lucide-react sonner clsx tailwind-merge`.",
+    "2. SETUP FONTS: Add the Google Fonts link to `public/index.html` immediately.",
+    "3. TAILWIND CONFIG: Update `tailwind.config.js` with the specific colors (obsidian, ember, agni) defined in this JSON. Do not rely on default colors.",
+    "4. GLOBAL CSS: Add the grain texture overlay to the `body` in `index.css`.",
+    "5. VOICE ORB: Create a dedicated `VoiceOrb` component that animates based on `listening` state.",
+    "6. HINDI SUPPORT: Ensure the `font-family-hindi` is applied whenever the language is switched to Hindi.",
+    "7. IMAGE GEN: Use a placeholder or mock API for image generation if a real backend isn't provided, but style the gallery with 'masonry' layout.",
+    "8. NO PURPLE/TEAL: Strictly avoid these colors. Use Orange/Red/Gold only.",
+    "9. DATA-TESTID: Add `data-testid` to all buttons, inputs, and major sections."
+  ],
+  "universal_guidelines": [
+    "Don't make generic centered layouts.",
+    "Create depth through layered design elements.",
+    "Use glass-morphism effects with backdrop filters.",
+    "Every interaction needs micro-animations.",
+    "Use 2-3x more spacing than feels comfortable."
+  ]
+}
