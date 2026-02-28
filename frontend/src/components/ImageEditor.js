@@ -8,7 +8,7 @@ import { t } from '../utils/translations'
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 const API = `${BACKEND_URL}/api`
 
-const ImageEditor = () => {
+const ImageEditor = ({ language = 'hi' }) => {
   const [activeTab, setActiveTab] = useState('remove-bg')
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
@@ -26,10 +26,10 @@ const ImageEditor = () => {
   ]
 
   const tabs = [
-    { id: 'remove-bg', name: 'बैकग्राउंड हटाएं', icon: Eraser },
-    { id: 'replace-bg', name: 'बैकग्राउंड बदलें', icon: Palette },
-    { id: 'enhance', name: 'क्वालिटी बढ़ाएं', icon: Sparkles },
-    { id: 'upscale', name: '4K Upscale', icon: Maximize2 },
+    { id: 'remove-bg', name: t('removeBg', language), icon: Eraser },
+    { id: 'replace-bg', name: t('replaceBg', language), icon: Palette },
+    { id: 'enhance', name: t('enhance', language), icon: Sparkles },
+    { id: 'upscale', name: t('upscale', language), icon: Maximize2 },
   ]
 
   const handleFileSelect = (e) => {
