@@ -58,7 +58,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
               data-testid="theme-toggle"
             >
               <span className="font-hindi">
-                {theme === 'dark' ? 'डार्क मोड (अनुशंसित)' : 'लाइट मोड'}
+                {theme === 'dark' ? t('darkMode', language) : t('lightMode', language)}
               </span>
               {theme === 'dark' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
