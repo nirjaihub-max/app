@@ -173,33 +173,44 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
         {messages.map((msg, idx) => (
           <motion.div
             key={idx}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: msg.role === 'user' ? 20 : -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3 }}
             className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             data-testid={`chat-message-${idx}`}
           >
-            <div
-              className={`max-w-[80%] px-4 py-3 rounded-2xl ${
-                msg.role === 'user'
-                  ? 'bg-gradient-to-r from-agni to-ember text-white'
-                  : 'bg-obsidian-card border border-agni/20 text-[#ffebd6]'
-              }`}
-            >
-              <p className="font-hindi leading-relaxed">{msg.content}</p>
+            <div className="group relative">
+              <div
+                className={`max-w-[80%] px-4 py-3 rounded-2xl ${
+                  msg.role === 'user'
+                    ? 'bg-gradient-to-r from-agni to-ember text-white'
+                    : 'bg-obsidian-card border border-agni/20 text-[#ffebd6]'
+                }`}
+              >
+                <p className="font-hindi leading-relaxed">{msg.content}</p>
+              </div>
+              {msg.role === 'assistant' && (
+                <div className="absolute top-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 -mt-8">
+                  <button
+                    onClick={() => copyMessage(msg.content)}
+                    className="p-1.5 bg-obsidian-card border border-agni/30 rounded-lg hover:bg-agni/20"
+                    title="Copy"
+                  >
+                    <Copy className="w-3 h-3 text-agni" />
+                  </button>
+                  <button
+                    onClick={() => shareMessage(msg.content)}
+                    className="p-1.5 bg-obsidian-card border border-agni/30 rounded-lg hover:bg-agni/20"
+                    title="Share"
+                  >
+                    <Share2 className="w-3 h-3 text-agni" />
+                  </button>
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
-        {loading && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex justify-start"
-          >
-            <div className="bg-obsidian-card border border-agni/20 px-4 py-3 rounded-2xl">
-              <Loader2 className="w-5 h-5 text-agni animate-spin" />
-            </div>
-          </motion.div>
-        )}
+        {loading && <TypingIndicator />}
         <div ref={messagesEndRef} />
       </div>
 
