@@ -77,8 +77,7 @@ function AppContent() {
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
       
-      {/* Voice Command Indicator - Disabled */}
-      {/*
+      {/* Voice Command Indicator */}
       <AnimatePresence>
         {isListeningForCommand && (
           <motion.div
@@ -101,7 +100,6 @@ function AppContent() {
           </motion.div>
         )}
       </AnimatePresence>
-      */}
       
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
