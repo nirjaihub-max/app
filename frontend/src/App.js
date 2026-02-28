@@ -20,6 +20,7 @@ const BottomNav = () => {
     { path: '/', icon: Mic, label: 'होम' },
     { path: '/chat', icon: MessageSquare, label: 'चैट' },
     { path: '/image', icon: ImageIcon, label: 'इमेज' },
+    { path: '/editor', icon: Scissors, label: 'एडिटर' },
     { path: '/settings', icon: Settings, label: 'सेटिंग्स' },
   ]
 
