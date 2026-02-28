@@ -55,10 +55,69 @@ function AppContent() {
   const [language, setLanguage] = useState('hi')
   const [voiceType, setVoiceType] = useState('alloy')
   const [showSplash, setShowSplash] = useState(true)
+  
+  // Voice Commands Hook
+  const {
+    listening,
+    isListeningForCommand,
+    startListening,
+    stopListening,
+    browserSupportsSpeechRecognition
+  } = useVoiceCommands()
+
+  // Auto-start voice listening after splash
+  useEffect(() => {
+    if (!showSplash && browserSupportsSpeechRecognition) {
+      startListening()
+    }
+  }, [showSplash])
 
   return (
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
+      
+      {/* Voice Command Indicator */}
+      <AnimatePresence>
+        {isListeningForCommand && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-agni to-ember px-6 py-3 rounded-full shadow-[0_0_30px_rgba(255,87,34,0.8)] border-2 border-white/30"
+            data-testid="voice-command-indicator"
+          >
+            <div className="flex items-center gap-3">
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity }}
+                className="w-3 h-3 bg-white rounded-full"
+              />
+              <p className="text-white font-bold font-hindi text-sm">
+                🎙️ सुन रहा हूं... कमांड बोलें
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Global Mic Toggle Button */}
+      {!showSplash && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.5 }}
+          onClick={listening ? stopListening : startListening}
+          className={`fixed bottom-24 right-6 z-40 p-4 rounded-full shadow-lg transition-all ${
+            listening
+              ? 'bg-gradient-to-r from-red-600 to-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse'
+              : 'bg-gradient-to-r from-agni to-ember shadow-[0_0_20px_rgba(255,87,34,0.4)]'
+          }`}
+          data-testid="global-voice-button"
+          title={listening ? 'वॉइस कमांड बंद करें' : 'वॉइस कमांड चालू करें'}
+        >
+          <Mic className={`w-6 h-6 text-white ${listening ? 'animate-pulse' : ''}`} />
+        </motion.button>
+      )}
       
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
@@ -78,6 +137,7 @@ function AppContent() {
       )}
     </div>
   )
+}
 }
 
 function App() {
