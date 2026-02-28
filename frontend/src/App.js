@@ -51,26 +51,38 @@ function AppContent() {
   const [sessionId] = useState(() => `session-${Date.now()}`)
   const [language, setLanguage] = useState('hi')
   const [voiceType, setVoiceType] = useState('alloy')
+  const [showSplash, setShowSplash] = useState(true)
 
   return (
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
-      <Routes>
-        <Route path="/" element={<Home sessionId={sessionId} language={language} />} />
-        <Route path="/chat" element={<ChatScreen sessionId={sessionId} language={language} voiceType={voiceType} />} />
-        <Route path="/image" element={<ImageGenerator language={language} />} />
-        <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />
-      </Routes>
-      <BottomNav />
+      
+      <AnimatePresence>
+        {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
+      </AnimatePresence>
+
+      {!showSplash && (
+        <>
+          <Routes>
+            <Route path="/" element={<Home sessionId={sessionId} language={language} />} />
+            <Route path="/chat" element={<ChatScreen sessionId={sessionId} language={language} voiceType={voiceType} />} />
+            <Route path="/image" element={<ImageGenerator language={language} />} />
+            <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />
+          </Routes>
+          <BottomNav />
+        </>
+      )}
     </div>
   )
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
