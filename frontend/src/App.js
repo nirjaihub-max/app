@@ -69,6 +69,7 @@ function AppContent() {
             <Route path="/" element={<Home sessionId={sessionId} language={language} />} />
             <Route path="/chat" element={<ChatScreen sessionId={sessionId} language={language} voiceType={voiceType} />} />
             <Route path="/image" element={<ImageGenerator language={language} />} />
+            <Route path="/editor" element={<ImageEditor />} />
             <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />
           </Routes>
           <BottomNav />
