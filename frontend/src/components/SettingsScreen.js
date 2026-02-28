@@ -96,7 +96,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
                 }`}
                 data-testid="language-english"
               >
-                <div>English (अंग्रेजी)</div>
+                <div>{t('english', language)}</div>
               </button>
             </div>
           </div>
