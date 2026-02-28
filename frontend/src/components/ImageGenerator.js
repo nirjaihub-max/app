@@ -81,11 +81,11 @@ const ImageGenerator = ({ language }) => {
           className="space-y-4"
         >
           <div className="space-y-2">
-            <label className="text-[#ffebd6] font-hindi block">आप क्या देखना चाहते हैं?</label>
+            <label className="text-[#ffebd6] font-hindi block">{t('whatToSee', language)}</label>
             <textarea
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
-              placeholder="उदाहरण: एक सुंदर पहाड़ पर सूर्यास्त..."
+              placeholder={t('promptPlaceholder', language)}
               className="w-full bg-black/40 border border-agni/30 focus:border-agni rounded-xl px-4 py-3 text-[#ffebd6] placeholder:text-[#8a6a5c] font-hindi outline-none min-h-[120px] resize-none"
               data-testid="image-prompt-input"
             />
