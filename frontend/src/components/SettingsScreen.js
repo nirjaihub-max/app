@@ -4,6 +4,8 @@ import { Settings as SettingsIcon, Volume2, Languages, Sun, Moon } from 'lucide-
 import { useTheme } from '../context/ThemeContext'
 
 const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
+  const { theme, toggleTheme } = useTheme()
+  
   const voiceOptions = [
     { value: 'alloy', label: 'Alloy (Neutral)', gender: 'Mixed' },
     { value: 'echo', label: 'Echo (Male)', gender: 'Male' },
