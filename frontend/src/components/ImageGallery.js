@@ -69,12 +69,17 @@ const ImageGallery = ({ newImage, onClose }) => {
         className="mt-6"
       >
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-xl font-heading text-[#ffebd6] font-hindi">आपकी गैलरी ({images.length})</h3>
+          <h3 className="text-xl font-heading text-[#ffebd6] font-hindi">आपकी गैलरी ({images.length}/5)</h3>
           {images.length > 0 && (
             <button
               onClick={() => {
-                localStorage.removeItem('hanuman_images')
-                setImages([])
+                try {
+                  localStorage.removeItem('hanuman_images')
+                  setImages([])
+                  toast.success('Gallery साफ हो गई')
+                } catch (error) {
+                  console.error('Failed to clear gallery:', error)
+                }
               }}
               className="text-xs text-red-400 hover:text-red-300 font-hindi"
             >
