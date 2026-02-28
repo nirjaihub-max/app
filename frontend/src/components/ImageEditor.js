@@ -257,7 +257,7 @@ const ImageEditor = ({ language = 'hi' }) => {
             className="space-y-4"
           >
             <div className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4">
-              <h3 className="font-heading text-[#ffebd6] font-hindi">ओरिजिनल फोटो</h3>
+              <h3 className="font-heading text-[#ffebd6] font-hindi">{t('originalPhoto', language)}</h3>
               
               {!previewUrl ? (
                 <label className="block cursor-pointer">
@@ -270,7 +270,7 @@ const ImageEditor = ({ language = 'hi' }) => {
                   />
                   <div className="border-2 border-dashed border-agni/30 rounded-xl p-12 text-center hover:border-agni/60 transition-all">
                     <Upload className="w-12 h-12 text-agni mx-auto mb-4" />
-                    <p className="text-[#cca891] font-hindi">फोटो अपलोड करें</p>
+                    <p className="text-[#cca891] font-hindi">{t('uploadPhoto', language)}</p>
                     <p className="text-xs text-[#8a6a5c] mt-2">PNG, JPG, WEBP</p>
                   </div>
                 </label>
