@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom'
 import { MessageSquare, Image as ImageIcon, Settings, Mic, Scissors } from 'lucide-react'
 import { Toaster } from 'sonner'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeProvider } from './context/ThemeContext'
 import SplashScreen from './components/SplashScreen'
 import ChatScreen from './components/ChatScreen'
@@ -10,6 +10,7 @@ import ImageGenerator from './components/ImageGenerator'
 import ImageEditor from './components/ImageEditor'
 import SettingsScreen from './components/SettingsScreen'
 import Home from './components/Home'
+import useVoiceCommands from './hooks/useVoiceCommands'
 import '@/App.css'
 
 const BottomNav = () => {
