@@ -112,9 +112,16 @@ function AppContent() {
             listening
               ? 'bg-gradient-to-r from-red-600 to-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse'
               : 'bg-gradient-to-r from-agni to-ember shadow-[0_0_20px_rgba(255,87,34,0.4)]'
-          }`}
+          } ${!browserSupportsSpeechRecognition ? 'opacity-50 cursor-not-allowed' : ''}`}
           data-testid="global-voice-button"
-          title={listening ? 'वॉइस कमांड बंद करें' : 'वॉइस कमांड चालू करें'}
+          title={
+            !browserSupportsSpeechRecognition 
+              ? 'वॉइस कमांड सपोर्ट नहीं है'
+              : isMobile
+              ? 'Mobile पर limited support (tap करें)'
+              : listening ? 'वॉइस कमांड बंद करें' : 'वॉइस कमांड चालू करें'
+          }
+          disabled={!browserSupportsSpeechRecognition}
         >
           <Mic className={`w-6 h-6 text-white ${listening ? 'animate-pulse' : ''}`} />
         </motion.button>
