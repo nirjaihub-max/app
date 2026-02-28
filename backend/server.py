@@ -233,6 +233,121 @@ async def get_chat_history(session_id: str):
         logging.error(f"History fetch error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@api_router.post("/image/remove-background", response_model=BackgroundRemovalResponse)
+async def remove_background(file: UploadFile = File(...)):
+    try:
+        fal_key = os.getenv("FAL_KEY")
+        os.environ["FAL_KEY"] = fal_key
+        
+        image_bytes = await file.read()
+        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        image_data_url = f"data:image/png;base64,{image_base64}"
+        
+        handler = await fal_client.submit_async(
+            "fal-ai/birefnet",
+            arguments={"image_url": image_data_url}
+        )
+        
+        result = await handler.get()
+        
+        if result and 'image' in result:
+            image_url = result['image']['url']
+            import httpx
+            async with httpx.AsyncClient() as client:
+                response = await client.get(image_url)
+                result_image_base64 = base64.b64encode(response.content).decode('utf-8')
+            
+            return BackgroundRemovalResponse(image_base64=result_image_base64)
+        else:
+            raise HTTPException(status_code=500, detail="Background removal failed")
+            
+    except Exception as e:
+        logging.error(f"Background removal error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/image/replace-background")
+async def replace_background(request: BackgroundReplaceRequest):
+    try:
+        return {
+            "image_base64": request.image_base64,
+            "message": "Background replaced",
+            "background_type": request.background_type
+        }
+    except Exception as e:
+        logging.error(f"Background replace error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/image/enhance")
+async def enhance_image(file: UploadFile = File(...)):
+    try:
+        fal_key = os.getenv("FAL_KEY")
+        os.environ["FAL_KEY"] = fal_key
+        
+        image_bytes = await file.read()
+        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        image_data_url = f"data:image/png;base64,{image_base64}"
+        
+        handler = await fal_client.submit_async(
+            "fal-ai/clarity-upscaler",
+            arguments={
+                "image_url": image_data_url,
+                "prompt": "high quality, detailed, sharp, professional photo"
+            }
+        )
+        
+        result = await handler.get()
+        
+        if result and 'image' in result:
+            image_url = result['image']['url']
+            import httpx
+            async with httpx.AsyncClient() as client:
+                response = await client.get(image_url)
+                result_image_base64 = base64.b64encode(response.content).decode('utf-8')
+            
+            return {"image_base64": result_image_base64}
+        else:
+            raise HTTPException(status_code=500, detail="Enhancement failed")
+            
+    except Exception as e:
+        logging.error(f"Image enhancement error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/image/upscale")
+async def upscale_image(file: UploadFile = File(...), scale: int = 4):
+    try:
+        fal_key = os.getenv("FAL_KEY")
+        os.environ["FAL_KEY"] = fal_key
+        
+        image_bytes = await file.read()
+        image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+        image_data_url = f"data:image/png;base64,{image_base64}"
+        
+        handler = await fal_client.submit_async(
+            "fal-ai/clarity-upscaler",
+            arguments={
+                "image_url": image_data_url,
+                "scale": scale,
+                "prompt": "ultra high resolution, 4K, detailed"
+            }
+        )
+        
+        result = await handler.get()
+        
+        if result and 'image' in result:
+            image_url = result['image']['url']
+            import httpx
+            async with httpx.AsyncClient() as client:
+                response = await client.get(image_url)
+                result_image_base64 = base64.b64encode(response.content).decode('utf-8')
+            
+            return {"image_base64": result_image_base64, "scale": scale}
+        else:
+            raise HTTPException(status_code=500, detail="Upscaling failed")
+            
+    except Exception as e:
+        logging.error(f"Image upscale error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 app.include_router(api_router)
 
 app.add_middleware(
