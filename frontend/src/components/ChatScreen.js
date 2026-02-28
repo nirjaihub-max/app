@@ -143,6 +143,24 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
     }
   }
 
+  const copyMessage = (text) => {
+    navigator.clipboard.writeText(text)
+    toast.success('कॉपी हो गया! 📋')
+  }
+
+  const shareMessage = async (text) => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ text })
+        toast.success('शेयर किया!')
+      } catch (error) {
+        console.error('Share error:', error)
+      }
+    } else {
+      copyMessage(text)
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col bg-obsidian">
       <div className="sticky top-0 z-10 bg-obsidian-card/90 backdrop-blur-lg border-b border-agni/30 px-4 py-4">
