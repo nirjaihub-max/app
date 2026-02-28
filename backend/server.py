@@ -66,6 +66,20 @@ class ImageGenerateResponse(BaseModel):
 class ChatHistoryResponse(BaseModel):
     messages: List[ChatMessage]
 
+class BackgroundRemovalResponse(BaseModel):
+    image_base64: str
+
+class BackgroundReplaceRequest(BaseModel):
+    image_base64: str
+    background_type: str
+
+class ImageEnhanceRequest(BaseModel):
+    image_base64: str
+
+class ImageUpscaleRequest(BaseModel):
+    image_base64: str
+    scale: Optional[int] = 4
+
 @api_router.get("/")
 async def root():
     return {"message": "Jai Hanuman! Hanuman GPT API is running"}
