@@ -26,12 +26,18 @@ const ImageGenerator = ({ language }) => {
       const response = await axios.post(`${API}/image/generate`, {
         prompt: prompt,
         language: language
+      }, {
+        timeout: 120000
       })
 
       setGeneratedImage(response.data.image_base64)
       toast.success('इमेज तैयार है! 🎨')
     } catch (error) {
-      toast.error('इमेज बनाने में समस्या। फिर से कोशिश करें।')
+      if (error.code === 'ECONNABORTED') {
+        toast.error('टाइमआउट! फिर से कोशिश करें।')
+      } else {
+        toast.error('इमेज बनाने में समस्या। फिर से कोशिश करें।')
+      }
       console.error('Image generation error:', error)
     } finally {
       setLoading(false)
