@@ -80,7 +80,8 @@ function AppContent() {
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
       
-      {/* Voice Command Indicator */}
+      {/* Voice Command Indicator - Disabled */}
+      {/*
       <AnimatePresence>
         {isListeningForCommand && (
           <motion.div
