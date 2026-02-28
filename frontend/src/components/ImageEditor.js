@@ -295,7 +295,7 @@ const ImageEditor = ({ language = 'hi' }) => {
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4"
               >
-                <h3 className="font-heading text-[#ffebd6] font-hindi">बैकग्राउंड चुनें</h3>
+                <h3 className="font-heading text-[#ffebd6] font-hindi">{t('selectBackground', language)}</h3>
                 <div className="grid grid-cols-3 gap-3">
                   {backgrounds.map((bg) => (
                     <button
