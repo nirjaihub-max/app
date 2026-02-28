@@ -62,6 +62,13 @@ const Home = ({ sessionId, language }) => {
       path: '/image',
       color: 'from-amber-600 to-orange-600'
     },
+    {
+      icon: Scissors,
+      title: 'Image Editor',
+      desc: 'बैकग्राउंड हटाएं, 4K upscale',
+      path: '/editor',
+      color: 'from-red-600 to-pink-600'
+    },
   ]
 
   return (
