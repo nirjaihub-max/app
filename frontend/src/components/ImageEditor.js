@@ -221,9 +221,9 @@ const ImageEditor = ({ language = 'hi' }) => {
           className="text-center space-y-2"
         >
           <h1 className="text-3xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-agni to-ember" data-testid="image-editor-title">
-            🎨 Image Editor
+            {t('editorTitle', language)}
           </h1>
-          <p className="text-[#cca891] font-hindi">प्रोफेशनल फोटो एडिटिंग - AI powered</p>
+          <p className="text-[#cca891] font-hindi">{t('editorSubtitle', language)}</p>
         </motion.div>
 
         {/* Tabs */}
