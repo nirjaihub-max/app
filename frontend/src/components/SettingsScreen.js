@@ -49,7 +49,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
               ) : (
                 <Sun className="w-5 h-5 text-agni" />
               )}
-              <h2 className="text-xl font-heading text-[#ffebd6]">Theme / थीम</h2>
+              <h2 className="text-xl font-heading text-[#ffebd6]">{t('theme', language)}</h2>
             </div>
             
             <button
