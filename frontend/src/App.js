@@ -67,14 +67,11 @@ function AppContent() {
   } = useVoiceCommands()
 
   // Auto-start voice listening after splash (only on desktop)
-  // Disabled - user doesn't want voice commands feature
-  /*
   useEffect(() => {
     if (!showSplash && browserSupportsSpeechRecognition && !isMobile) {
       startListening()
     }
   }, [showSplash])
-  */
 
   return (
     <div className="min-h-screen pb-20">
