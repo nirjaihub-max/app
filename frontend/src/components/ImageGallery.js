@@ -90,7 +90,8 @@ const ImageGallery = ({ newImage, onClose }) => {
 
         {images.length === 0 ? (
           <div className="text-center py-8 text-[#8a6a5c] font-hindi">
-            अभी तक कोई इमेज नहीं बनाई
+            अभी तक कोई इमेज नहीं बनाई<br/>
+            <span className="text-xs">(अधिकतम 5 इमेज save होंगी)</span>
           </div>
         ) : (
           <div className="grid grid-cols-2 gap-4">
