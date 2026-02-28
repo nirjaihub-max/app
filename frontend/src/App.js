@@ -18,11 +18,11 @@ const BottomNav = () => {
   const location = useLocation()
   
   const navItems = [
-    { path: '/', icon: Mic, label: 'होम' },
+    { path: '/', icon: Mic, label: 'Home' },
     { path: '/chat', icon: MessageSquare, label: 'Live Chat' },
-    { path: '/image', icon: ImageIcon, label: 'इमेज' },
-    { path: '/editor', icon: Scissors, label: 'एडिटर' },
-    { path: '/settings', icon: Settings, label: 'सेटिंग्स' },
+    { path: '/image', icon: ImageIcon, label: 'Image' },
+    { path: '/editor', icon: Scissors, label: 'Editor' },
+    { path: '/settings', icon: Settings, label: 'Settings' },
   ]
 
   return (
