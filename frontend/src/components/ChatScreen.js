@@ -215,37 +215,41 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
       </div>
 
       <div className="sticky bottom-0 bg-obsidian-card/90 backdrop-blur-lg border-t border-agni/30 p-4">
-        <div className="max-w-md mx-auto flex items-center gap-2">
-          <button
-            onClick={isRecording ? stopRecording : startRecording}
-            className={`p-3 rounded-full transition-all ${
-              isRecording
-                ? 'bg-red-600 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse'
-                : 'bg-agni/20 hover:bg-agni/30 border border-agni/50'
-            }`}
-            data-testid="voice-record-button"
-          >
-            <Mic className="w-5 h-5 text-agni" />
-          </button>
+        <div className="max-w-md mx-auto space-y-2">
+          <VoiceWaveform isRecording={isRecording} audioStream={audioStream} />
           
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-            placeholder="कुछ पूछें..."
-            className="flex-1 bg-black/40 border border-agni/30 focus:border-agni rounded-full px-4 py-3 text-[#ffebd6] placeholder:text-[#8a6a5c] font-hindi outline-none"
-            data-testid="chat-input"
-          />
-          
-          <button
-            onClick={sendMessage}
-            disabled={!input.trim() || loading}
-            className="p-3 rounded-full bg-gradient-to-r from-agni to-ember hover:from-orange-500 hover:to-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_15px_rgba(255,87,34,0.4)]"
-            data-testid="send-message-button"
-          >
-            <Send className="w-5 h-5 text-white" />
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={isRecording ? stopRecording : startRecording}
+              className={`p-3 rounded-full transition-all ${
+                isRecording
+                  ? 'bg-red-600 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse'
+                  : 'bg-agni/20 hover:bg-agni/30 border border-agni/50'
+              }`}
+              data-testid="voice-record-button"
+            >
+              <Mic className="w-5 h-5 text-agni" />
+            </button>
+            
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+              placeholder="कुछ पूछें..."
+              className="flex-1 bg-black/40 border border-agni/30 focus:border-agni rounded-full px-4 py-3 text-[#ffebd6] placeholder:text-[#8a6a5c] font-hindi outline-none"
+              data-testid="chat-input"
+            />
+            
+            <button
+              onClick={sendMessage}
+              disabled={!input.trim() || loading}
+              className="p-3 rounded-full bg-gradient-to-r from-agni to-ember hover:from-orange-500 hover:to-amber-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_15px_rgba(255,87,34,0.4)]"
+              data-testid="send-message-button"
+            >
+              <Send className="w-5 h-5 text-white" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
