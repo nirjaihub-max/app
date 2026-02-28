@@ -104,7 +104,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
           <div className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4">
             <div className="flex items-center gap-3 mb-4">
               <Volume2 className="w-5 h-5 text-agni" />
-              <h2 className="text-xl font-heading text-[#ffebd6]">Voice / आवाज़</h2>
+              <h2 className="text-xl font-heading text-[#ffebd6]">{t('voice', language)}</h2>
             </div>
             
             <div className="space-y-2">
