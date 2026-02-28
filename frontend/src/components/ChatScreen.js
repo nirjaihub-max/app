@@ -14,6 +14,7 @@ const ChatScreen = ({ sessionId, language, voiceType }) => {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [isRecording, setIsRecording] = useState(false)
+  const [audioStream, setAudioStream] = useState(null)
   const messagesEndRef = useRef(null)
   const mediaRecorderRef = useRef(null)
   const audioChunksRef = useRef([])
