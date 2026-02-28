@@ -62,12 +62,13 @@ function AppContent() {
     isListeningForCommand,
     startListening,
     stopListening,
-    browserSupportsSpeechRecognition
+    browserSupportsSpeechRecognition,
+    isMobile
   } = useVoiceCommands()
 
-  // Auto-start voice listening after splash
+  // Auto-start voice listening after splash (only on desktop)
   useEffect(() => {
-    if (!showSplash && browserSupportsSpeechRecognition) {
+    if (!showSplash && browserSupportsSpeechRecognition && !isMobile) {
       startListening()
     }
   }, [showSplash])
