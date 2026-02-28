@@ -138,7 +138,6 @@ function AppContent() {
     </div>
   )
 }
-}
 
 function App() {
   return (
