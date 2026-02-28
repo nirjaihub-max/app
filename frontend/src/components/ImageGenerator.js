@@ -132,7 +132,7 @@ const ImageGenerator = ({ language }) => {
               data-testid="download-image-button"
             >
               <Download className="w-5 h-5" />
-              <span className="font-hindi">डाउनलोड करें</span>
+              <span className="font-hindi">{t('download', language)}</span>
             </button>
           </motion.div>
         )}
