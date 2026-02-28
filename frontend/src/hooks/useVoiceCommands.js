@@ -21,11 +21,7 @@ const useVoiceCommands = () => {
     const checkMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
     setIsMobile(checkMobile)
     
-    if (checkMobile && browserSupportsSpeechRecognition) {
-      toast.info('📱 Mobile पर वॉइस commands limited support हैं। Desktop Chrome में बेहतर काम करता है।', {
-        duration: 5000
-      })
-    }
+    // Removed mobile warning toast for cleaner UX
   }, [])
 
   // Voice command mappings
