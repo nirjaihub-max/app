@@ -87,20 +87,11 @@ const useVoiceCommands = () => {
     setIsListeningForCommand(true)
     resetTranscript()
     
-    // Visual and audio feedback
-    toast.success('🔥 जय हनुमान! बोलिए क्या चाहिए?', {
-      duration: 2000,
-      style: {
-        background: 'linear-gradient(135deg, #ff5722 0%, #ff9800 100%)',
-        color: 'white',
-        fontWeight: 'bold',
-      }
-    })
-
+    // Minimal feedback - only command indicator shown at top
+    
     // Auto-deactivate after 5 seconds if no command given
     const timeout = setTimeout(() => {
       deactivateCommandMode()
-      toast.info('कोई कमांड नहीं मिली', { duration: 1500 })
     }, 5000)
     
     setCommandTimeout(timeout)
