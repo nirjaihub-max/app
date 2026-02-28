@@ -53,7 +53,11 @@ const ImageGallery = ({ newImage, onClose }) => {
   const deleteImage = (id) => {
     const updatedImages = images.filter(img => img.id !== id)
     setImages(updatedImages)
-    localStorage.setItem('hanuman_images', JSON.stringify(updatedImages))
+    try {
+      localStorage.setItem('hanuman_images', JSON.stringify(updatedImages))
+    } catch (error) {
+      console.error('Failed to update storage:', error)
+    }
     if (selectedImage?.id === id) setSelectedImage(null)
   }
 
