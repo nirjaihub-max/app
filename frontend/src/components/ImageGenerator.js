@@ -69,9 +69,9 @@ const ImageGenerator = ({ language }) => {
             </div>
           </div>
           <h1 className="text-3xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-orange-600" data-testid="image-gen-title">
-            AI Image Generator
+            {t('imageGenTitle', language)}
           </h1>
-          <p className="text-[#cca891] font-hindi">कुछ भी imagine करें, हम बना देंगे</p>
+          <p className="text-[#cca891] font-hindi">{t('imageGenSubtitle', language)}</p>
         </motion.div>
 
         <motion.div
