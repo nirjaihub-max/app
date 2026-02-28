@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Sparkles, Download, Loader2 } from 'lucide-react'
 import axios from 'axios'
 import { toast } from 'sonner'
+import ImageGallery from './ImageGallery'
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL
 const API = `${BACKEND_URL}/api`
