@@ -56,6 +56,9 @@ const Home = ({ sessionId, language }) => {
             <p className="text-[#8a6a5c] text-xs mt-1 font-hindi">
               जैसे: "image banao", "chat kholo", "editor kholo"
             </p>
+            <p className="text-[#6a4a3c] text-xs mt-2 font-hindi border-t border-agni/20 pt-2">
+              💡 नोट: Desktop Chrome में सबसे बेहतर काम करता है
+            </p>
           </div>
         </motion.div>
 
