@@ -40,6 +40,33 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
           transition={{ delay: 0.2 }}
           className="space-y-6"
         >
+          {/* Theme Toggle */}
+          <div className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4">
+            <div className="flex items-center gap-3 mb-4">
+              {theme === 'dark' ? (
+                <Moon className="w-5 h-5 text-agni" />
+              ) : (
+                <Sun className="w-5 h-5 text-agni" />
+              )}
+              <h2 className="text-xl font-heading text-[#ffebd6]">Theme / थीम</h2>
+            </div>
+            
+            <button
+              onClick={toggleTheme}
+              className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-agni to-ember text-white font-bold transition-all shadow-[0_0_15px_rgba(255,87,34,0.4)] flex items-center justify-between"
+              data-testid="theme-toggle"
+            >
+              <span className="font-hindi">
+                {theme === 'dark' ? 'डार्क मोड (अनुशंसित)' : 'लाइट मोड'}
+              </span>
+              {theme === 'dark' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
+            </button>
+            <p className="text-xs text-[#8a6a5c] font-hindi">
+              नोट: हनुमान GPT डार्क थीम के लिए डिज़ाइन किया गया है
+            </p>
+          </div>
+
+          {/* Language Selection */}
           <div className="bg-obsidian-card/80 border border-agni/20 rounded-2xl p-6 space-y-4">
             <div className="flex items-center gap-3 mb-4">
               <Languages className="w-5 h-5 text-agni" />
