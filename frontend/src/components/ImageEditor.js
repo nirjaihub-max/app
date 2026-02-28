@@ -361,12 +361,12 @@ const ImageEditor = ({ language = 'hi' }) => {
                   {loading ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
-                      <span className="font-hindi">प्रोसेस हो रहा है...</span>
+                      <span className="font-hindi">{t('processing', language)}</span>
                     </>
                   ) : (
                     <>
                       <Sparkles className="w-5 h-5" />
-                      <span className="font-hindi">प्रोसेस करें</span>
+                      <span className="font-hindi">{t('process', language)}</span>
                     </>
                   )}
                 </button>
@@ -378,7 +378,7 @@ const ImageEditor = ({ language = 'hi' }) => {
                     data-testid="download-result-button"
                   >
                     <Download className="w-5 h-5" />
-                    <span className="font-hindi">डाउनलोड करें</span>
+                    <span className="font-hindi">{t('download', language)}</span>
                   </button>
                 )}
               </div>
