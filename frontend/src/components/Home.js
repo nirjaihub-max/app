@@ -1,51 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { Mic, MessageSquare, Image as ImageIcon, Sparkles, Scissors } from 'lucide-react'
+import { MessageSquare, Image as ImageIcon, Sparkles, Scissors } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import VoiceOrb from './VoiceOrb'
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import { toast } from 'sonner'
 
 const Home = ({ sessionId, language }) => {
   const navigate = useNavigate()
-  const [isProcessing, setIsProcessing] = useState(false)
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition()
-
-  useEffect(() => {
-    if (transcript.toLowerCase().includes('jai hanuman')) {
-      handleVoiceActivation()
-    }
-  }, [transcript])
-
-  const handleVoiceActivation = async () => {
-    if (isProcessing) return
-    
-    setIsProcessing(true)
-    toast.success('🔥 जय हनुमान! सुन रहा हूं...')
-    resetTranscript()
-    
-    setTimeout(() => {
-      setIsProcessing(false)
-      navigate('/chat')
-    }, 1500)
-  }
-
-  const startListening = () => {
-    if (!browserSupportsSpeechRecognition) {
-      toast.error('आपका ब्राउज़र वॉइस को सपोर्ट नहीं करता')
-      return
-    }
-    SpeechRecognition.startListening({ continuous: true, language: language === 'hi' ? 'hi-IN' : 'en-IN' })
-  }
-
-  const stopListening = () => {
-    SpeechRecognition.stopListening()
-  }
 
   const features = [
     {
