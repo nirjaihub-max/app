@@ -100,32 +100,6 @@ function AppContent() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Global Mic Toggle Button */}
-      {!showSplash && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.5 }}
-          onClick={listening ? stopListening : startListening}
-          className={`fixed bottom-24 right-6 z-40 p-4 rounded-full shadow-lg transition-all ${
-            listening
-              ? 'bg-gradient-to-r from-red-600 to-red-500 shadow-[0_0_20px_rgba(239,68,68,0.6)] animate-pulse'
-              : 'bg-gradient-to-r from-agni to-ember shadow-[0_0_20px_rgba(255,87,34,0.4)]'
-          } ${!browserSupportsSpeechRecognition ? 'opacity-50 cursor-not-allowed' : ''}`}
-          data-testid="global-voice-button"
-          title={
-            !browserSupportsSpeechRecognition 
-              ? 'वॉइस कमांड सपोर्ट नहीं है'
-              : isMobile
-              ? 'Mobile पर limited support (tap करें)'
-              : listening ? 'वॉइस कमांड बंद करें' : 'वॉइस कमांड चालू करें'
-          }
-          disabled={!browserSupportsSpeechRecognition}
-        >
-          <Mic className={`w-6 h-6 text-white ${listening ? 'animate-pulse' : ''}`} />
-        </motion.button>
-      )}
       
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
