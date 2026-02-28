@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Settings as SettingsIcon, Volume2, Languages, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
+import { t } from '../utils/translations'
 
 const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
   const { theme, toggleTheme } = useTheme()
