@@ -63,7 +63,7 @@ const SettingsScreen = ({ language, setLanguage, voiceType, setVoiceType }) => {
               {theme === 'dark' ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
             </button>
             <p className="text-xs text-[#8a6a5c] font-hindi">
-              नोट: हनुमान GPT डार्क थीम के लिए डिज़ाइन किया गया है
+              {t('themeNote', language)}
             </p>
           </div>
 
