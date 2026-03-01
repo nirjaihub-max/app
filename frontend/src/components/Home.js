@@ -48,7 +48,6 @@ const Home = ({ sessionId, language }) => {
       alt="Hanuman GPT"
       className="w-20 h-20 object-contain"
     />
-  </div>
 </div>
           </div>
           <h1 className="text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-agni via-ember to-agni drop-shadow-[0_0_20px_rgba(255,87,34,0.5)]" data-testid="app-title">
@@ -95,7 +94,8 @@ const Home = ({ sessionId, language }) => {
             )
           })}
         </motion.div> 
-      </div> */}
+      </div>
+      */}
     </div>
   )
 }
