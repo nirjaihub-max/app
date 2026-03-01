@@ -28,7 +28,8 @@ const BottomNav = () => {
     <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-agni/30 z-50 safe-area-pb" data-testid="bottom-navigation">
       <div className="flex justify-around items-center p-4 max-w-md mx-auto">
         {navItems.map((item) => {
-          const Icon = item.icon                                                                                                                                                           const isActive = location.pathname === item.path
+          const Icon = item.icon                                                                                                                                                           
+            const isActive = location.pathname === item.path
           return (
             <button                                                                                                                                                                            key={item.path}
               onClick={() => navigate(item.path)}
