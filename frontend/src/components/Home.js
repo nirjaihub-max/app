@@ -41,10 +41,15 @@ const Home = ({ sessionId, language }) => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-4"
         >
-          <div className="flex justify-center">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-br from-agni to-ember flex items-center justify-center shadow-[0_0_40px_rgba(255,87,34,0.6)]">
-              <Sparkles className="w-12 h-12 text-white" />
-            </div>
+            <div className="flex justify-center">
+  <div className="w-28 h-28 rounded-full bg-black flex items-center justify-center shadow-[0_0_50px_rgba(255,87,34,0.7)] border border-agni/40">
+    <img
+      src="/icon-512.png"
+      alt="Hanuman GPT"
+      className="w-20 h-20 object-contain"
+    />
+  </div>
+</div>
           </div>
           <h1 className="text-5xl font-heading font-bold text-transparent bg-clip-text bg-gradient-to-r from-agni via-ember to-agni drop-shadow-[0_0_20px_rgba(255,87,34,0.5)]" data-testid="app-title">
             HANUMAN GPT
