@@ -16,27 +16,23 @@ import '@/App.css'
 const BottomNav = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  
+
   const navItems = [
     { path: '/', icon: Mic, label: 'Home' },
     { path: '/chat', icon: MessageSquare, label: 'Live Chat' },
     { path: '/image', icon: ImageIcon, label: 'Image' },
     { path: '/editor', icon: Scissors, label: 'Editor' },
-    { path: '/settings', icon: Settings, label: 'Settings' },
   ]
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-agni/30 z-50 safe-area-pb" data-testid="bottom-navigation">
       <div className="flex justify-around items-center p-4 max-w-md mx-auto">
         {navItems.map((item) => {
-          const Icon = item.icon
-          const isActive = location.pathname === item.path
+          const Icon = item.icon                                                                                                                                                           const isActive = location.pathname === item.path
           return (
-            <button
-              key={item.path}
+            <button                                                                                                                                                                            key={item.path}
               onClick={() => navigate(item.path)}
-              className={`flex flex-col items-center gap-1 transition-colors ${
-                isActive ? 'text-agni' : 'text-[#cca891] hover:text-agni'
+              className={`flex flex-col items-center gap-1 transition-colors ${                                                                                                                  isActive ? 'text-agni' : 'text-[#cca891] hover:text-agni'
               }`}
               data-testid={`nav-${item.label}`}
             >
@@ -51,11 +47,12 @@ const BottomNav = () => {
 }
 
 function AppContent() {
+const navigate = useNavigate()
   const [sessionId] = useState(() => `session-${Date.now()}`)
   const [language, setLanguage] = useState('hi')
   const [voiceType, setVoiceType] = useState('alloy')
   const [showSplash, setShowSplash] = useState(true)
-  
+
   // Voice Commands Hook
   const {
     listening,
@@ -76,7 +73,13 @@ function AppContent() {
   return (
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
-      
+<button
+  onClick={() => navigate('/settings')}
+  className="fixed top-4 right-4 z-50 w-11 h-11 rounded-full bg-black/70 border border-agni/40 flex items-center justify-center text-agni hover:bg-black/90 transition"
+  aria-label="Settings"
+>
+  <Settings className="w-5 h-5" />
+</button>
       {/* Voice Command Indicator */}
       <AnimatePresence>
         {isListeningForCommand && (
@@ -84,8 +87,9 @@ function AppContent() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-agni to-ember px-6 py-3 rounded-full shadow-[0_0_30px_rgba(255,87,34,0.8)] border-2 border-white/30"
-            data-testid="voice-command-indicator"
+ className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-agni to-ember px-6 py-3 rounded-full shadow-[0_0_30px_rgba(255,87,34,0.8)] border-2 border
+-white/30"
+    data-testid="voice-command-indicator"
           >
             <div className="flex items-center gap-3">
               <motion.div
@@ -94,13 +98,13 @@ function AppContent() {
                 className="w-3 h-3 bg-white rounded-full"
               />
               <p className="text-white font-bold font-hindi text-sm">
-                🎙️ सुन रहा हूं... कमांड बोलें
+                🎙️  सुन रहा हूं...
               </p>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
@@ -112,8 +116,7 @@ function AppContent() {
             <Route path="/chat" element={<ChatScreen sessionId={sessionId} language={language} voiceType={voiceType} />} />
             <Route path="/image" element={<ImageGenerator language={language} />} />
             <Route path="/editor" element={<ImageEditor language={language} />} />
-            <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />
-          </Routes>
+            <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />                        </Routes>
           <BottomNav />
         </>
       )}
@@ -126,9 +129,9 @@ function App() {
     <ThemeProvider>
       <BrowserRouter>
         <AppContent />
-      </BrowserRouter>
-    </ThemeProvider>
+      </BrowserRouter>                                                                                                                                                               </ThemeProvider>
   )
 }
 
 export default App
+~
