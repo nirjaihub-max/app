@@ -93,7 +93,7 @@ const Home = ({ sessionId, language }) => {
               </motion.button>
             )
           })}
-        </motion.div> */}
+        </motion.div>*/}
       </div>
     </div>
   )
