@@ -68,7 +68,7 @@ const Home = ({ sessionId, language }) => {
         </motion.div>
 
         {/* Feature Cards */}
-{/*  <motion.div
+{/*<motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -93,9 +93,8 @@ const Home = ({ sessionId, language }) => {
               </motion.button>
             )
           })}
-        </motion.div> 
+        </motion.div> */}
       </div>
-      */}
     </div>
   )
 }
