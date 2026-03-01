@@ -13,6 +13,7 @@ import Home from './components/Home'
 import useVoiceCommands from './hooks/useVoiceCommands'
 import '@/App.css'
 
+/* -------------------- Bottom Navigation -------------------- */
 const BottomNav = () => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -25,19 +26,25 @@ const BottomNav = () => {
   ]
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-agni/30 z-50 safe-area-pb" data-testid="bottom-navigation">
+    <nav className="fixed bottom-0 left-0 right-0 bg-black/90 backdrop-blur-lg border-t border-agni/30 z-50 safe-area-pb">
       <div className="flex justify-around items-center p-4 max-w-md mx-auto">
         {navItems.map((item) => {
-          const Icon = item.icon                                                                                                                                                           
-            const isActive = location.pathname === item.path
+          const Icon = item.icon
+          const isActive = location.pathname === item.path
+
           return (
-            <button                                                                                                                                                                            key={item.path}
+            <button
+              key={item.path}
               onClick={() => navigate(item.path)}
-              className={`flex flex-col items-center gap-1 transition-colors ${                                                                                                                  isActive ? 'text-agni' : 'text-[#cca891] hover:text-agni'
+              className={`flex flex-col items-center gap-1 transition-colors ${
+                isActive ? 'text-agni' : 'text-[#cca891] hover:text-agni'
               }`}
-              data-testid={`nav-${item.label}`}
             >
-              <Icon className={`w-6 h-6 ${isActive ? 'drop-shadow-[0_0_8px_rgba(255,87,34,0.8)]' : ''}`} />
+              <Icon
+                className={`w-6 h-6 ${
+                  isActive ? 'drop-shadow-[0_0_8px_rgba(255,87,34,0.8)]' : ''
+                }`}
+              />
               <span className="text-xs font-hindi">{item.label}</span>
             </button>
           )
@@ -47,40 +54,41 @@ const BottomNav = () => {
   )
 }
 
+/* -------------------- App Content -------------------- */
 function AppContent() {
-const navigate = useNavigate()
+  const navigate = useNavigate()
+
   const [sessionId] = useState(() => `session-${Date.now()}`)
   const [language, setLanguage] = useState('hi')
   const [voiceType, setVoiceType] = useState('alloy')
   const [showSplash, setShowSplash] = useState(true)
 
-  // Voice Commands Hook
   const {
-    listening,
     isListeningForCommand,
     startListening,
-    stopListening,
     browserSupportsSpeechRecognition,
-    isMobile
+    isMobile,
   } = useVoiceCommands()
 
-  // Auto-start voice listening after splash (only on desktop)
   useEffect(() => {
     if (!showSplash && browserSupportsSpeechRecognition && !isMobile) {
       startListening()
     }
-  }, [showSplash])
+  }, [showSplash, browserSupportsSpeechRecognition, isMobile, startListening])
 
   return (
     <div className="min-h-screen pb-20">
       <Toaster position="top-center" theme="dark" />
-<button
-  onClick={() => navigate('/settings')}
-  className="fixed top-4 right-4 z-50 w-11 h-11 rounded-full bg-black/70 border border-agni/40 flex items-center justify-center text-agni hover:bg-black/90 transition"
-  aria-label="Settings"
->
-  <Settings className="w-5 h-5" />
-</button>
+
+      {/* Top Right Settings Button */}
+      <button
+        onClick={() => navigate('/settings')}
+        className="fixed top-4 right-4 z-50 w-11 h-11 rounded-full bg-black/70 border border-agni/40 flex items-center justify-center text-agni hover:bg-black/90 transition"
+        aria-label="Settings"
+      >
+        <Settings className="w-5 h-5" />
+      </button>
+
       {/* Voice Command Indicator */}
       <AnimatePresence>
         {isListeningForCommand && (
@@ -88,9 +96,7 @@ const navigate = useNavigate()
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
- className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-agni to-ember px-6 py-3 rounded-full shadow-[0_0_30px_rgba(255,87,34,0.8)] border-2 border
--white/30"
-    data-testid="voice-command-indicator"
+            className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-gradient-to-r from-agni to-ember px-6 py-3 rounded-full shadow-[0_0_30px_rgba(255,87,34,0.8)] border-2 border-white/30"
           >
             <div className="flex items-center gap-3">
               <motion.div
@@ -99,7 +105,7 @@ const navigate = useNavigate()
                 className="w-3 h-3 bg-white rounded-full"
               />
               <p className="text-white font-bold font-hindi text-sm">
-                🎙️  सुन रहा हूं...
+                🎙️ सुन रहा हूं...
               </p>
             </div>
           </motion.div>
@@ -114,10 +120,30 @@ const navigate = useNavigate()
         <>
           <Routes>
             <Route path="/" element={<Home sessionId={sessionId} language={language} />} />
-            <Route path="/chat" element={<ChatScreen sessionId={sessionId} language={language} voiceType={voiceType} />} />
+            <Route
+              path="/chat"
+              element={
+                <ChatScreen
+                  sessionId={sessionId}
+                  language={language}
+                  voiceType={voiceType}
+                />
+              }
+            />
             <Route path="/image" element={<ImageGenerator language={language} />} />
             <Route path="/editor" element={<ImageEditor language={language} />} />
-            <Route path="/settings" element={<SettingsScreen language={language} setLanguage={setLanguage} voiceType={voiceType} setVoiceType={setVoiceType} />} />                        </Routes>
+            <Route
+              path="/settings"
+              element={
+                <SettingsScreen
+                  language={language}
+                  setLanguage={setLanguage}
+                  voiceType={voiceType}
+                  setVoiceType={setVoiceType}
+                />
+              }
+            />
+          </Routes>
           <BottomNav />
         </>
       )}
@@ -125,14 +151,15 @@ const navigate = useNavigate()
   )
 }
 
+/* -------------------- App Root -------------------- */
 function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
         <AppContent />
-      </BrowserRouter>                                                                                                                                                               </ThemeProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
 export default App
-~
